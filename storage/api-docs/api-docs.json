@@ -1,0 +1,18 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "NarutoRPG",
+        "contact": {
+            "name": "Developer Contact",
+            "url": "https://www.example.com"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:8081",
+    "basePath": "",
+    "schemes": [
+        "http"
+    ],
+    "paths": {},
+    "definitions": {}
+}
