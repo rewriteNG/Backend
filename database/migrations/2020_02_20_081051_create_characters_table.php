@@ -15,9 +15,9 @@ class CreateCharactersTable extends Migration
     {
         Schema::create('characters', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id')->unique();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
-            $table->string('home_village');
+            $table->enum('home_village', ['Konoha', 'Ame', 'Iwa', 'Suna', 'Kusa', 'Kumo', 'Taki', 'Landlos']);
             $table->string('current_location');
             $table->string('faction');
             $table->integer('age');
