@@ -21,7 +21,7 @@ class CharactersTableSeeder extends Seeder
             'home_village' => 'Konoha', 
             'current_location' => 'Konoha', 
             'faction' => 'Konoha', 
-            'age' => $faker->age,
+            'age' => '18',
         ]);
     }
 }
