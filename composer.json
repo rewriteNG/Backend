@@ -13,6 +13,7 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.2",
         "laravel/tinker": "^2.0",
+        "tymon/jwt-auth": "dev-develop",
         "zircote/swagger-php": "2.*"
     },
     "require-dev": {
