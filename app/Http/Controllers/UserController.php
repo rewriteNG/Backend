@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Moduls\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
@@ -85,14 +87,34 @@ class UserController extends Controller
 
     public function register(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        $valid = $this->registerValidate($request->all());
+        if ($valid !== null) {
+            return response()->json($valid, 400);
+        }
+        // Log::debug('input', [$check]);
+    }
+
+    /**
+     * validates input for registration, when error it returns an array, else null
+     * @param array $request
+     * @return null|array
+     */
+    protected function registerValidate(array $request)
+    {
+        $validator = Validator::make($request, [
             'name' => 'required|min:4',
             'email' => 'required|email:rfc',
             'password' => 'required|min:8',
         ]);
-        Log::debug('input', $request->all());
         if ($validator->fails()) {
-            return response()->json(($validator->getMessageBag()));
+            return ['message' => $validator->getMessageBag()];
         }
+        if (DB::table('users')->where('name', $request['name'])->first() !== null) {
+            return ['message' => ['name' => ['name already exists']]];
+        }
+        if ($check['email'] = DB::table('users')->where('email', $request['email'])->first() !== null) {
+            return ['message' => ['email' => ['email already exists']]];
+        }
+        return null;
     }
 }
