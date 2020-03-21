@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -85,11 +86,11 @@ class UserController extends Controller
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'login' => 'required',
-            'email' => 'required',
-            'password' => 'required',
+            'name' => 'required|min:4',
+            'email' => 'required|email:rfc',
+            'password' => 'required|min:8',
         ]);
-
+        Log::debug('input', $request->all());
         if ($validator->fails()) {
             return response()->json(($validator->getMessageBag()));
         }
