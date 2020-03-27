@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Character extends Model
 {
     use SoftDeletes;
+    protected $table= "char_base";
 
     /**
      * The attributes that are mass assignable.
