@@ -17,11 +17,20 @@ class CharactersTableSeeder extends Seeder
 
         Character::create([
             'user_id' => 1,
-            'name' => $faker->name, 
-            'home_village' => 'Konoha', 
-            'current_location' => 'Konoha', 
-            'faction' => 'Konoha', 
+            'name' => $faker->name,
+            'home_village' => 'Konoha',
+            'current_location' => 'Konoha',
+            'faction' => 'Konoha',
             'age' => '18',
+        ]);
+        Character::create([
+            'user_id' => 1,
+            'name' => $faker->name,
+            'home_village' => 'Landlos',
+            'current_location' => 'Konoha',
+            'faction' => 'Konoha',
+            'gender' => 'w',
+            'age' => '35',
         ]);
     }
 }
