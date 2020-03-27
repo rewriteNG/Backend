@@ -19,3 +19,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/login', "UserController@login");
 Route::get('/me', "UserController@me");
 Route::post('/register', "UserController@register");
+Route::get('/logout','UserController@logout');
+
+
+Route::fallback(function(){
+    return response()->json([
+        'message' => 'Page Not Found. If error persists, contact info@website.com'], 404);
+});
