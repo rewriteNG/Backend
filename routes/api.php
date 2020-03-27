@@ -16,13 +16,18 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+//auth routes
 Route::post('/login', "UserController@login");
 Route::get('/me', "UserController@me");
 Route::post('/register', "UserController@register");
-Route::get('/logout','UserController@logout');
+Route::get('/logout', 'UserController@logout');
 
 
-Route::fallback(function(){
+//character routes
+Route::get('/character/index', 'CharacterController@index');
+
+Route::fallback(function () {
     return response()->json([
-        'message' => 'Page Not Found. If error persists, contact info@website.com'], 404);
+        'message' => 'Page Not Found. If error persists, contact info@website.com'
+    ], 404);
 });
