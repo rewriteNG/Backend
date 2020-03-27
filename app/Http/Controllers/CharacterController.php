@@ -35,7 +35,6 @@ class CharacterController extends Controller
         if ($char->isEmpty()) {
             return response()->json(["message" => "No Character found"], 400);
         }
-        Log::debug('reponse', [$char]);
         return response()->json($char->first(), 200);
     }
 }
