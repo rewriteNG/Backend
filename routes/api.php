@@ -25,6 +25,7 @@ Route::get('/logout', 'UserController@logout');
 
 //character routes
 Route::get('/character/index', 'CharacterController@index');
+Route::get('/character/charbase/{id}', 'CharacterController@getCharBase');
 
 Route::fallback(function () {
     return response()->json([
