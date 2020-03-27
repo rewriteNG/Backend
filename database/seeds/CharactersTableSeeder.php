@@ -1,6 +1,6 @@
 <?php
 
-use App\Moduls\Character;
+use App\Moduls\CharBase;
 use Illuminate\Database\Seeder;
 
 class CharactersTableSeeder extends Seeder
@@ -15,7 +15,7 @@ class CharactersTableSeeder extends Seeder
 
         $faker = \Faker\Factory::create();
 
-        Character::create([
+        CharBase::create([
             'user_id' => 1,
             'name' => $faker->name,
             'home_village' => 'Konoha',
@@ -23,7 +23,7 @@ class CharactersTableSeeder extends Seeder
             'faction' => 'Konoha',
             'age' => '18',
         ]);
-        Character::create([
+        CharBase::create([
             'user_id' => 1,
             'name' => $faker->name,
             'home_village' => 'Landlos',

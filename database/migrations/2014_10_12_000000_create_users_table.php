@@ -13,9 +13,19 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+        // theoreitschen bonus tage 
+        // wievievele trainingspunkte, anhand fähigkeiten erkennen und jutsus
+        // maxtainings ein pool für account
+        //used Trainingspoint , sind eher am charakcter
+        // erstattete trainingspunkte können direkt fester pool der auf null läuft
+
+
+        // genaue logik für character tod ohne account löschen
+
+        // tracking des characters auf eine account tabelle
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

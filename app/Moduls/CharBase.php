@@ -5,11 +5,9 @@ namespace App\Moduls;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Character extends Model
+class CharBase extends Model
 {
     use SoftDeletes;
-    protected $table= "char_base";
-
     /**
      * The attributes that are mass assignable.
      *
@@ -19,7 +17,7 @@ class Character extends Model
         'name', 'home_village', 'current_location', 'faction', 'age', 'picture', 'rank'
     ];
 
-     /**
+    /**
      * The model's default values for attributes.
      *
      * @var array
