@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Moduls\Character\CharBase;
+use App\Moduls\Character\CharValue;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
@@ -36,5 +37,14 @@ class CharacterController extends Controller
             return response()->json(["message" => "No Character found"], 400);
         }
         return response()->json($char->first(), 200);
+    }
+
+    public function getCharValue(int $id)
+    {
+        $value = CharValue::where('char_id', $id)->where('user_id', auth()->user()->id)->get();
+        if ($value->isEmpty()) {
+            return response()->json(["message" => "No Character found"], 400);
+        }
+        return response()->json($value->first(), 200);
     }
 }
