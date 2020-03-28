@@ -1,6 +1,6 @@
 <?php
 
-use App\Moduls\CharBase;
+use App\Moduls\Character\CharBase;
 use Illuminate\Database\Seeder;
 
 class CharactersTableSeeder extends Seeder

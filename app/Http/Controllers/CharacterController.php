@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Moduls\CharBase;
+use App\Moduls\Character\CharBase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
@@ -31,7 +31,7 @@ class CharacterController extends Controller
 
     public function getCharBase(int $id)
     {
-        $char = CharBase::where('user_id', auth()->user()->id)->where('id', $id)->get();
+        $char = CharBase::where('id', $id)->get();
         if ($char->isEmpty()) {
             return response()->json(["message" => "No Character found"], 400);
         }
