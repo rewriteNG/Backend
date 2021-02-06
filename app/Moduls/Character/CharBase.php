@@ -2,12 +2,15 @@
 
 namespace App\Moduls\Character;
 
+use Database\Factories\CharBaseFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class CharBase extends Model
 {
     use SoftDeletes;
+    use HasFactory;
     /**
      * The attributes that are mass assignable.
      *
@@ -30,10 +33,14 @@ class CharBase extends Model
         'rank' => 'Genin',
     ];
 
-    // public function test_models_can_be_persisted()
-    // {
-    //     $user = CharBase::factory()->count(1)->make();
-
-    //     // Use model in tests...
-    // }
+    /**
+     * 
+     * Create a new factory instance for the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    protected static function newFactory()
+    {
+        return CharBaseFactory::new();
+    }
 }

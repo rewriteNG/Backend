@@ -2,8 +2,7 @@
 
 namespace Database\Factories;
 
-namespace App\Moduls\Character\CharBase;
-
+use App\Moduls\Character\CharBase;
 use App\Moduls\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -29,7 +28,7 @@ class CharBaseFactory extends Factory
             'home_village' => 'Konoha',
             'current_location' => 'Konoha',
             'faction' => 'Konoha',
-            'age' => $this->faker->range(15, 90),
+            'age' => $this->faker->randomDigit,
         ];
     }
 }
