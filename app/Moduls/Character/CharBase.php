@@ -29,4 +29,11 @@ class CharBase extends Model
     protected $attributes = [
         'rank' => 'Genin',
     ];
+
+    // public function test_models_can_be_persisted()
+    // {
+    //     $user = CharBase::factory()->count(1)->make();
+
+    //     // Use model in tests...
+    // }
 }

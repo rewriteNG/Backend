@@ -1,6 +1,9 @@
 <?php
 
+use App\Moduls\Character\CharValue;
+use App\Moduls\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,8 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(UsersTableSeeder::class);
-        $this->call(CharactersTableSeeder::class);
-        $this->call(CharValuesTableSeeder::class);
+        User::factory()->count(50)->create();
     }
 }
+#php artisan migrate:fresh --seed
