@@ -33,6 +33,16 @@ class CharBase extends Model
         'rank' => 'Genin',
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function charValue()
+    {
+        return $this->hasOne(CharValue::class, 'char_id');
+    }
+
     /**
      * 
      * Create a new factory instance for the model.

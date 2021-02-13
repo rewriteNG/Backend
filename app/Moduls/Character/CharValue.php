@@ -24,6 +24,11 @@ class CharValue extends Model
         'elements' => 'array'
     ];
 
+    public function charBase()
+    {
+        return $this->belongsTo(CharBase::class);
+    }
+
     /**
      * 
      * Create a new factory instance for the model.

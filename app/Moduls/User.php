@@ -2,6 +2,7 @@
 
 namespace App\Moduls;
 
+use App\Moduls\Character\CharBase;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -40,6 +41,11 @@ class User extends Authenticatable implements JWTSubject
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function charBase()
+    {
+        return $this->hasMany(CharBase::class);
+    }
 
     public function getJWTIdentifier()
     {

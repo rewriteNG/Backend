@@ -23,10 +23,8 @@ class CharValueFactory extends Factory
     public function definition()
     {
         return [
-            'char_id' => CharBase::factory(),
-            'user_id' => function (array $attributes) {
-                return CharBase::find($attributes['char_id'])->user_id;
-            },
+            'char_id' => 1,
+            'user_id' => 1,
             'str' => $this->faker->randomNumber(),
             'def' => $this->faker->randomNumber(),
             'speed' => $this->faker->randomNumber(),

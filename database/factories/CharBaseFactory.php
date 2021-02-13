@@ -23,7 +23,7 @@ class CharBaseFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory(),
+            'user_id' => 1,
             'name' => $this->faker->name,
             'home_village' => 'Konoha',
             'current_location' => 'Konoha',
