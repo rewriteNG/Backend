@@ -35,7 +35,7 @@ class CharValueFactory extends Factory
             'gen' => 10,
             'learn' => 1.2,
             'elements' => [
-                '1' => 'wasser'
+                '1' => 'Wasser'
             ]
         ];
     }

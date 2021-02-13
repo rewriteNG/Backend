@@ -15,7 +15,7 @@ class CreateCharBaseTable extends Migration
     {
         Schema::create('char_bases', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id')->foreign('user_id')->references('id')->on('users');
+            $table->integer('user_id')->foreign('user_id')->references('id')->on('users'); //TODO dont send to frontend
             $table->string('name');
             $table->enum('home_village', ['Konoha', 'Ame', 'Iwa', 'Suna', 'Kusa', 'Kumo', 'Taki', 'Landlos']);
             $table->enum('gender', ['m', 'w', 'd']);
