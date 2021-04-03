@@ -52,15 +52,17 @@ class CharacterController extends Controller
 
     public function deteleChar(int $id)
     {
-        $charBase = $this->getCharBaseData($id)->first();
+        $charBase = $this->getCharBaseData($id);
         if ($charBase->isEmpty()) {
             return response()->json($this->error, 400);
         }
-        $charValue = $this->getCharValueData($id)->first();
+        $charValue = $this->getCharValueData($id);
         if ($charValue->isEmpty()) {
             return response()->json($this->error, 400);
         }
-        $charBase->delete();
+        $charBase->first()->delete();
+        // $charValue->first()->delete();
+        return response()->json();
     }
 
 

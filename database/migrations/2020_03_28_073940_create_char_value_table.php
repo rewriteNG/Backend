@@ -16,7 +16,7 @@ class CreateCharValueTable extends Migration
         Schema::create('char_values', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id')->foreign('user_id')->references('id')->on('users');
-            $table->integer('char_id')->foreign('char_id')->references('id')->on('char_bases');
+            $table->integer('char_id')->foreign('char_id')->references('id')->on('char_bases')->onDelete('cascade');
             $table->integer('str')->default(0);
             $table->integer('def')->default(0);
             $table->integer('speed')->default(0);
