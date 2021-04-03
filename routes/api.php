@@ -27,6 +27,7 @@ Route::get('/logout', 'UserController@logout');
 Route::get('/character/index', 'CharacterController@index');
 Route::get('/character/charbase/{id}', 'CharacterController@getCharBase');
 Route::get('/character/charvalue/{id}', 'CharacterController@getCharValue');
+Route::get('/character/delete/{id}', 'CharacterController@deteleChar');
 
 Route::fallback(function () {
     return response()->json([

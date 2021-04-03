@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Validator;
 
 class CharacterController extends Controller
 {
+    protected array $error = ["message" => "No Character found"];
+
     /**
      * Create a new AuthController instance.
      *
@@ -25,26 +27,50 @@ class CharacterController extends Controller
     {
         $char = CharBase::where('user_id', auth()->user()->id)->get();
         if ($char->isEmpty()) {
-            return response()->json(["message" => "No Character found"], 400);
+            return response()->json($this->error, 400);
         }
         return response()->json($char, 200);
     }
 
     public function getCharBase(int $id)
     {
-        $char = CharBase::where('id', $id)->get();
+        $char = $this->getCharBaseData($id);
         if ($char->isEmpty()) {
-            return response()->json(["message" => "No Character found"], 400);
+            return response()->json($this->error, 400);
         }
         return response()->json($char->first(), 200);
     }
 
     public function getCharValue(int $id)
     {
-        $value = CharValue::where('char_id', $id)->where('user_id', auth()->user()->id)->get();
+        $value = $this->getCharValueData($id);
         if ($value->isEmpty()) {
-            return response()->json(["message" => "No Character found"], 400);
+            return response()->json($this->error, 400);
         }
         return response()->json($value->first(), 200);
+    }
+
+    public function deteleChar(int $id)
+    {
+        $charBase = $this->getCharBaseData($id)->first();
+        if ($charBase->isEmpty()) {
+            return response()->json($this->error, 400);
+        }
+        $charValue = $this->getCharValueData($id)->first();
+        if ($charValue->isEmpty()) {
+            return response()->json($this->error, 400);
+        }
+        $charBase->delete();
+    }
+
+
+    private function getCharBaseData(int $id)
+    {
+        return CharBase::where('id', $id)->where('user_id', auth()->user()->id)->get();
+    }
+
+    private function getCharValueData(int $id)
+    {
+        return CharValue::where('char_id', $id)->where('user_id', auth()->user()->id)->get();
     }
 }
