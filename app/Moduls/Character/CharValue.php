@@ -24,6 +24,10 @@ class CharValue extends Model
         'elements' => 'array'
     ];
 
+    protected $hidden = [
+        'user_id', 'id'
+    ];
+
     public function charBase()
     {
         return $this->belongsTo(CharBase::class);

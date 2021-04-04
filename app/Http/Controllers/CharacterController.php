@@ -19,7 +19,7 @@ class CharacterController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('auth:api');
+        // $this->middleware('auth:api'); //TODO after finish uncomment
     }
 
 
@@ -61,7 +61,6 @@ class CharacterController extends Controller
             return response()->json($this->error, 400);
         }
         $charBase->first()->delete();
-        // $charValue->first()->delete();
         return response()->json();
     }
 

@@ -20,6 +20,16 @@ class CharBase extends Model
         'name', 'home_village', 'current_location', 'faction', 'age', 'picture', 'rank'
     ];
 
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'user_id',
+    ];
+
+
     protected $guarded = [
         'id', 'user_id'
     ];
