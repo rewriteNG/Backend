@@ -26,7 +26,7 @@ class CreateCharValueTable extends Migration
             $table->integer('nin')->default(0);
             $table->integer('gen')->default(0);
             $table->integer('learn')->default(1);
-            $table->json('elements');
+            $table->json('elements')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

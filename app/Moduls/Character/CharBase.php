@@ -43,6 +43,10 @@ class CharBase extends Model
         'rank' => 'Genin',
     ];
 
+    public const HOME_VILLAGE = ['Konoha', 'Ame', 'Iwa', 'Suna', 'Kusa', 'Kumo', 'Taki', 'Landlos'];
+
+    public const GENDER =  ['m', 'w', 'd'];
+
     protected static $relations_to_cascade = ['charValue'];
 
     protected static function boot()

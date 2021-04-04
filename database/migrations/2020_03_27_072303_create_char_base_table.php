@@ -20,7 +20,7 @@ class CreateCharBaseTable extends Migration
             $table->enum('home_village', ['Konoha', 'Ame', 'Iwa', 'Suna', 'Kusa', 'Kumo', 'Taki', 'Landlos']);
             $table->enum('gender', ['m', 'w', 'd']);
             $table->string('current_location');
-            $table->string('faction');
+            $table->string('faction')->nullable();
             $table->integer('age');
             $table->string('picture')->nullable();
             $table->string('rank')->default('Genin'); // sollte auch spezial Jounin

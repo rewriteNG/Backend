@@ -27,7 +27,8 @@ Route::get('/logout', 'UserController@logout');
 Route::get('/character/index', 'CharacterController@index');
 Route::get('/character/charbase/{id}', 'CharacterController@getCharBase');
 Route::get('/character/charvalue/{id}', 'CharacterController@getCharValue');
-Route::get('/character/delete/{id}', 'CharacterController@deteleChar');
+Route::get('/character/delete/{id}', 'CharacterController@deteleChar'); //TODO change from get to delete
+Route::post('/character/create', 'CharacterController@createChar');
 
 Route::fallback(function () {
     return response()->json([
