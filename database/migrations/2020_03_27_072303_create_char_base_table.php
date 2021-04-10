@@ -16,12 +16,14 @@ class CreateCharBaseTable extends Migration
         Schema::create('char_bases', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id')->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); //TODO dont send to frontend
-            $table->string('name');
-            $table->enum('home_village', ['Konoha', 'Ame', 'Iwa', 'Suna', 'Kusa', 'Kumo', 'Taki', 'Landlos']);
-            $table->enum('gender', ['m', 'w', 'd']);
+            $table->string('firstname');
+            $table->string('surname');
+            $table->integer('age');
+            $table->string('chakra_color');
+            $table->string('gender');
+            $table->string('home_village');
             $table->string('current_location');
             $table->string('faction')->nullable();
-            $table->integer('age');
             $table->string('picture')->nullable();
             $table->string('rank')->default('Genin'); // sollte auch spezial Jounin
             $table->integer('money')->default(1);
