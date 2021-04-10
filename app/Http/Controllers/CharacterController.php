@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Moduls\Character\CharBase;
 use App\Moduls\Character\CharValue;
+use App\Moduls\Optionset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
@@ -39,12 +40,15 @@ class CharacterController extends Controller
             return response()->json($valid, 400);
         }
         $userid = auth()->user()->id;
-        $charBase = new CharBase();
+        $charBase = new CharBase($request->all());
         $charBase->user_id = $userid;
-        $charBase->name = $request['name'];
-        $charBase->age = $request['age'];
-        $charBase->home_village = CharBase::HOME_VILLAGE[0];
+        if (Optionset::where("category", "home_villate")->where("value", $request['home_village'])->first() === null) {
+            $charBase->home_village = 'Konohagakure';
+        }
         $charBase->current_location = $charBase->home_village;
+        if (Optionset::where("category", "chakra_color")->where("value", $request['chakra_color'])->first() === null) {
+            $charBase->chakra_color = 'Blau';
+        }
         $charBase->save();
         $charBase->refresh();
         $charValue = new CharValue();
@@ -106,18 +110,17 @@ class CharacterController extends Controller
     protected function createValidate(array $request)
     {
         $validator = Validator::make($request, [
-            'name' => 'required|min:4',
+            'firstname' => 'required|min:4',
+            'surname' => 'required|min:4',
+            'gender' => 'required',
             'age' => 'required|numeric|min:12|max:21',
         ]);
         if ($validator->fails()) {
             return ['message' => $validator->getMessageBag()];
         }
-        // if (User::where('name', $request['name'])->first() !== null) {
-        //     return ['message' => ['name' => ['name already exists']]];
-        // }
-        // if (User::where('email', $request['email'])->first() !== null) {
-        //     return ['message' => ['email' => ['email already exists']]];
-        // }
+        if (CharBase::where('firstname', $request["firstname"])->where('surname', $request['surname'])->first() !== null) {
+            return ['message' => ['name' => ['character with this first and lastname already exists']]];
+        }
         return null;
     }
 }

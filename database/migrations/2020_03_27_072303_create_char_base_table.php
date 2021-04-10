@@ -15,13 +15,13 @@ class CreateCharBaseTable extends Migration
     {
         Schema::create('char_bases', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id')->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); //TODO dont send to frontend
+            $table->integer('user_id')->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('firstname');
             $table->string('surname');
             $table->integer('age');
-            $table->string('chakra_color');
-            $table->string('gender'); //['m', 'w', 'd']
-            $table->string('home_village'); //['Konoha', 'Ame', 'Iwa', 'Suna', 'Kusa', 'Kumo', 'Taki', 'Landlos']
+            $table->string('chakra_color')->nullable();
+            $table->string('gender');
+            $table->string('home_village')->nullable();
             $table->string('current_location');
             $table->string('faction')->nullable();
             $table->string('picture')->nullable();

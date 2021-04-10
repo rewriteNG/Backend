@@ -17,7 +17,7 @@ class CharBase extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'home_village', 'current_location', 'faction', 'age', 'picture', 'rank'
+        'surname', 'firstname', 'gender', 'chakra_color', 'home_village', 'current_location', 'faction', 'age', 'picture', 'rank'
     ];
 
     /**
@@ -42,10 +42,6 @@ class CharBase extends Model
     protected $attributes = [
         'rank' => 'Genin',
     ];
-
-    public const HOME_VILLAGE = ['Konoha', 'Ame', 'Iwa', 'Suna', 'Kusa', 'Kumo', 'Taki', 'Landlos'];
-
-    public const GENDER =  ['m', 'w', 'd'];
 
     protected static $relations_to_cascade = ['charValue'];
 
