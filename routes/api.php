@@ -22,6 +22,8 @@ Route::get('/me', "UserController@me");
 Route::post('/register', "UserController@register");
 Route::get('/logout', 'UserController@logout');
 
+//optionset routes
+Route::get('/option/{category}', 'OptionsetController@getOptionset');
 
 //character routes
 Route::get('/character/index', 'CharacterController@index');

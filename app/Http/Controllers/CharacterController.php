@@ -42,7 +42,7 @@ class CharacterController extends Controller
         $userid = auth()->user()->id;
         $charBase = new CharBase($request->all());
         $charBase->user_id = $userid;
-        if (Optionset::where("category", "home_villate")->where("value", $request['home_village'])->first() === null) {
+        if (Optionset::where("category", "home_village")->where("value", $request['home_village'])->first() === null) {
             $charBase->home_village = 'Konohagakure';
         }
         $charBase->current_location = $charBase->home_village;
