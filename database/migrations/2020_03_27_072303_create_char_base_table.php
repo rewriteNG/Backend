@@ -20,8 +20,8 @@ class CreateCharBaseTable extends Migration
             $table->string('surname');
             $table->integer('age');
             $table->string('chakra_color');
-            $table->string('gender');
-            $table->string('home_village');
+            $table->string('gender'); //['m', 'w', 'd']
+            $table->string('home_village'); //['Konoha', 'Ame', 'Iwa', 'Suna', 'Kusa', 'Kumo', 'Taki', 'Landlos']
             $table->string('current_location');
             $table->string('faction')->nullable();
             $table->string('picture')->nullable();

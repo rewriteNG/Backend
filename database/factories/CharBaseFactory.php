@@ -24,10 +24,12 @@ class CharBaseFactory extends Factory
     {
         return [
             'user_id' => 1,
-            'name' => $this->faker->name,
-            'home_village' => 'Konoha',
-            'current_location' => 'Konoha',
-            'faction' => 'Konoha',
+            'firstname' => $this->faker->firstName,
+            'surname' => $this->faker->lastName,
+            'home_village' => 'Konohagakure',
+            'current_location' => 'Konohagakure',
+            'chakra_color' => "Blau",
+            'gender' => 'divers',
             'age' => $this->faker->randomDigit,
         ];
     }

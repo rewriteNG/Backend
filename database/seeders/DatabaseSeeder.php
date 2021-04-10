@@ -16,7 +16,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // CharValue::factory()->count(50)->create();
         User::factory()
             ->has(
                 CharBase::factory()
@@ -39,6 +38,9 @@ class DatabaseSeeder extends Seeder
                     ->count(3)
             )
             ->create(["name" => "admin"]);
+        $this->call([
+            OptionsetSeeder::class,
+        ]);
     }
 }
 #php artisan migrate:fresh --seed
