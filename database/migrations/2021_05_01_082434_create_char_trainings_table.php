@@ -15,6 +15,11 @@ class CreateCharTrainingsTable extends Migration
     {
         Schema::create('char_trainings', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id')->foreign('user_id')->references('id')->on('users');
+            $table->integer('char_id')->foreign('char_id')->references('id')->on('char_bases')->onDelete('cascade');
+            $table->string('char_value');
+            $table->integer('days')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

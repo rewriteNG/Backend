@@ -32,6 +32,10 @@ Route::get('/character/charvalue/{id}', 'CharacterController@getCharValue');
 Route::get('/character/delete/{id}', 'CharacterController@deteleChar'); //TODO change from get to delete
 Route::post('/character/create', 'CharacterController@createChar');
 
+Route::post('/character/train/create', 'CharTrainingController@store');
+Route::delete('/character/train/delete/{id}', 'CharTrainingController@destroy');
+Route::get('/character/train/getBaseTrain/{id}', 'CharTrainingController@getBaseTrainValue');
+
 Route::fallback(function () {
     return response()->json([
         'message' => 'Page Not Found. If error persists, contact info@website.com'
