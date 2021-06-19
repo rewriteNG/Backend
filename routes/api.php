@@ -33,6 +33,7 @@ Route::get('/character/delete/{id}', 'CharacterController@deteleChar'); //TODO c
 Route::post('/character/create', 'CharacterController@createChar');
 
 Route::post('/character/train/create', 'CharTrainingController@create');
+Route::get('/character/train/index/{id}', 'CharTrainingCOntroller@index');
 Route::delete('/character/train/delete/{id}', 'CharTrainingController@destroy');
 Route::get('/character/train/getBaseTrain/{id}', 'CharTrainingController@getBaseTrainValue');
 

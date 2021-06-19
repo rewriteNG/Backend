@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 
 class CharTrainingController extends Controller
 {
+    protected array $error = ["message" => "No Training found"];
     /**
      * Create a new AuthController instance.
      *
@@ -24,9 +25,13 @@ class CharTrainingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(int $char_id)
     {
-        //
+        $value = CharTraining::where('char_id', $char_id)->where('user_id', auth()->user()->id)->get();
+        if ($value->isEmpty()) {
+            return response()->json($this->error, 400);
+        }
+        return response()->json($value->first());
     }
 
 
@@ -102,6 +107,7 @@ class CharTrainingController extends Controller
 
     public function getBaseTrainValue(int $id)
     {
+        //TODO move values in config or optionsets
         $out = [];
         $base_value = 1.35;
         $base_stamina = 7.5;

@@ -17,4 +17,13 @@ class CharTraining extends Model
         'char_value',
         'days'
     ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'user_id', 'id', 'char_id', "deleted_at", "created_at", "updated_at"
+    ];
 }
