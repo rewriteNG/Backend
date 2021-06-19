@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Moduls\Character\CharTraining;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class CharTrainingController extends Controller
@@ -40,10 +41,10 @@ class CharTrainingController extends Controller
         if ($valid !== null) {
             return response()->json($valid, 400);
         }
-        $this->destroy($request['id']);
+        $this->destroy($request['char_id']);
         CharTraining::create([
             'user_id' => auth()->user()->id,
-            'char_id' => $request['id'],
+            'char_id' => $request['char_id'],
             'char_value' => $request["char_value"],
             'days' => $request['days']
         ]);
@@ -94,7 +95,7 @@ class CharTrainingController extends Controller
     {
         $value = CharTraining::where('char_id', $char_id)->where('user_id', auth()->user()->id)->get();
         if (!$value->isEmpty()) {
-            $value->delete();
+            $value->first()->delete();
         }
         return response()->json();
     }
