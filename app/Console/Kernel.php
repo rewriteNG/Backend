@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->job(new DailyUpdate)->everyMinute();
+        $schedule->job(new DailyUpdate)->everyMinute(); //TODO change schedule for production
     }
 
     /**
